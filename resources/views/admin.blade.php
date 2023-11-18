@@ -13,19 +13,9 @@
       </thead>
       <tbody>
            <tr>
-            <td class="font-weight-bold">CPU</td>
+            <td class="font-weight-bold">Cpu</td>
             
-            <td>hiện đang có 23 Sản phẩm</td>
-          </tr>
-          <tr>
-            <td class="font-weight-bold">Card</td>
-            
-            <td>hiện đang có 23 Sản phẩm</td>
-          </tr>
-          <tr>
-            <td class="font-weight-bold">Màn hình</td>
-            
-            <td>hiện đang có 23 Sản phẩm</td>
+            <td>hiện đang có 21 Sản phẩm</td>
           </tr>
 
         

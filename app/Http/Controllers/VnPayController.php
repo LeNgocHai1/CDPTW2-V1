@@ -12,11 +12,12 @@ class VnPayController extends Controller
 {
     public function create(Request $request, $price)
     {       
-        
+       
     }
 
     public function return(Request $request)
 {
 
+    
 }
 }
