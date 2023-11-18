@@ -19,8 +19,11 @@ class AdminBillController extends Controller
      */
     public function index()
     {
-       
-      return view('order.index');
+        $customers = DB::table('customers')
+                    ->join('bills', 'customers.id', '=', 'bills.customerID')
+                    ->select('customers.*', 'bills.status as status')
+                    ->get();
+      return view('order.index',['customers'=>$customers]);
     }
 
     /**
@@ -63,8 +66,20 @@ class AdminBillController extends Controller
      */
     public function edit($id)
     {
-                
-                    return view('order.show');
+                     $customer = DB::table('customers')
+                    ->join('bills', 'customers.id', '=', 'bills.customerID')
+                    ->select('customers.*', 'bills.bill_id as bill_id', 'bills.total as bill_total', 'bills.note as bill_note', 'bills.status as bill_status', 'bills.payment as bill_payment', 'bills.codevnpay as bill_codevnpay')
+                    ->where('customers.id', '=', $id)
+                    ->first();
+
+                    $bills = DB::table('bills')
+                    ->join('bill_details', 'bills.bill_id', '=', 'bill_details.bill_id')
+                    ->leftjoin('products', 'bill_details.productID', '=', 'products.productID')
+                    ->where('bills.customerID', '=', $id)
+                    ->select('bills.*', 'bill_details.*', 'products.productName as product_name')
+                    ->get();
+
+                    return view('order.show',['customer'=>$customer,'bills'=>$bills]);
                     
     }
 
@@ -77,7 +92,11 @@ class AdminBillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $bill = Bill::find($id);
+        $bill->status = $request->input('status');
+        $bill->save();
+        Session::flash('message', "Cập nhật thành công !");
+
         return redirect()->route('bill.index');
     }
 
@@ -89,7 +108,11 @@ class AdminBillController extends Controller
      */
     public function destroy($id)
     {   
-       
+        BillDetail::where('bill_id', $id)->delete();
+        Bill::where('customerID', $id)->delete();
+        Customer::find($id)->delete();
+        Session::flash('message', "Đã xóa thành công đơn hàng");
+
         return redirect()->route('bill.index');
     }
   

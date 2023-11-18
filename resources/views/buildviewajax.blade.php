@@ -4,15 +4,17 @@
   </thead>
   <tbody>
    
+ 
+      @foreach ($products as $product)
   <tr>
      
     
-      <td><img src="public/upload/cpu3.jpg" style="vertical-align: middle;  width:80px;margin-right: 30px"></td>
+      <td><img src="public/upload/{{ $product->productImage }}" style="vertical-align: middle;  width:80px;margin-right: 30px"></td>
       <td>
-        <p style="color: #4A235A;"><b>Vỏ case Xigmatek X Battleship ( No fan)</b></p>
+        <p style="color: #4A235A;"><b>{{ $product->productName }}</b></p>
      </td>
      <td>
-      <p><b>2.599.000₫</b>
+      <p><b>{{ number_format( $product->listPrice ) }}₫</b>
           <p>
   </td>
   <td>

@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('public/frontend/stylecss.css') }}">
-    <link rel="stylesheet" href="{{ asset("public/frontend/bootstrap-4.0.0-dist/css/bootstrap.css") }}">
-      <link rel="stylesheet" href="{{ asset("public/frontend/bootstrap-4.0.0-dist/spinner.css") }}">
-    <link rel="stylesheet" href="{{ asset("public/frontend/fontawesome-free-5.13.1-web/fontawesome-free-5.13.1-web/css/all.css") }}">
-
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/jq/jquery-3.5.1.min.js") }}"></script>
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/jq/jquery-3.5.1.js") }}"></script>
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/jq/sweetalert.min.js") }}"></script>
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/js/bootstrap.js") }}"></script>
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/js/popper.min.js") }}"></script>
-    <script src="{{ asset("public/frontend/bootstrap-4.0.0-dist/js/bootstrap.min.js") }}" ></script>
-    <script src="{{ asset("public/frontend/fontawesome-free-5.13.1-web/fontawesome-free-5.13.1-web/js/all.js") }}"></script>
+    <link rel="stylesheet" href="{{ asset('frontend/stylecss.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/bootstrap-4.0.0-dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/bootstrap-4.0.0-dist/spinner.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/fontawesome-free-5.13.1-web/fontawesome-free-5.13.1-web/css/all.css') }}">
+    
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/jq/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/jq/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/jq/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap-4.0.0-dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/fontawesome-free-5.13.1-web/fontawesome-free-5.13.1-web/js/all.js') }}"></script>
     <!-- JavaScript -->
-<script src="{{ asset('public/frontend/alertifyjs/alertify.js') }}"></script>
-<script src="{{ asset('public/frontend/zoom/zoom.js') }}"></script>
-<script src="{{ asset('public/frontend/swiper/js/swiper.min.js') }}"></script>
+    <script src="{{ asset('frontend/alertifyjs/alertify.js') }}"></script>
+    <script src="{{ asset('frontend/zoom/zoom.js') }}"></script>
+    <script src="{{ asset('frontend/swiper/js/swiper.min.js') }}"></script>
+    
 
 
 
 <!-- CSS -->
-<link rel="stylesheet" href="{{ asset('public/frontend/alertifyjs/css/alertify.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('frontend/alertifyjs/css/alertify.min.css') }}">
 <!-- Default theme -->
-<link rel="stylesheet" href="{{ asset('public/frontend/alertifyjs/css/themes/default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/alertifyjs/css/themes/default.min.css') }}">
 <!-- Semantic UI theme -->
-<link rel="stylesheet" href="{{ asset('public/frontend/alertifyjs/css/themes/semantic.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/alertifyjs/css/themes/semantic.min.css') }}">
 <!-- Bootstrap theme -->
-<link rel="stylesheet" href="{{ asset('public/frontend/alertifyjs/css/themes/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/frontend/swiper/css/swiper.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/alertifyjs/css/themes/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/swiper/css/swiper.min.css') }}">
 <link rel="stylesheet" href="{{ asset('public/frontend/swiper/style.css') }}">
+
 
     
     <title>Website cung cấp linh kiện máy tính</title>

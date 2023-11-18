@@ -7,6 +7,7 @@
    <div class="row">
       <h4 class="list-product-title col-sm-12 bg-danger text-white" style="text-align: left;"> <i class="fa fa-shopping-basket"></i> Giỏ Hàng của bạn </h4>
       <div class="table" id="list-cart">
+         @if (Session::has("Cart") != null)
          <table class="table table-hover">
             <thead class="bg-info text-white">
                <tr>
@@ -19,24 +20,27 @@
                </tr>
             </thead>
             <tbody>
+            
+               @foreach(Session::get('Cart')->products as $item)
                <tr>
-                  <td> <img src="public/upload/mn4.jpg" style="vertical-align: middle;  width:80px;margin-right: 30px">
+                  <td> <img src="{{ asset('public/upload/' . $item['productInfo']->productImage)}}" style="vertical-align: middle;  width:80px;margin-right: 30px">
                   </td>
                   <td>
-                     <p style="color: #4A235A;"><b>Màn hình Samsung LS24C360EAEXXV/24 inch/FHD(1920x1080)/75Hz</b></p>
+                     <p style="color: #4A235A;"><b>{{ $item['productInfo']->productName }}</b></p>
                   </td>
                   <td>
-                     <p class="font-italic">2.400.000 VNĐ</p>
+                     <p class="font-italic">{{ number_format($item['productInfo']->listPrice) }}₫</p>
                   </td>
                   <td class="d-flex">
-                     <input data-id="" type="number" id="quanty-item-" style="width: 70%;" name="soluong" min="1" max="9" value="" class="form-control" required>
-                    <!--  <h2> <a href="#" onclick="SaveListItemCart;"  role="button"><i class="fad fa-save"></i></a></h2> -->
+                     <input data-id="{{ $item['productInfo']->productID }}" type="number" id="quanty-item-{{ $item['productInfo']->productID }}" style="width: 70%;" name="soluong" min="1" max="9" value="{{ $item['quanty'] }}" class="form-control" required>
+                    <!--  <h2> <a href="#" onclick="SaveListItemCart({{ $item['productInfo']->productID }});"  role="button"><i class="fad fa-save"></i></a></h2> -->
                   </td>
-                  <td style="font-weight: bold; color: #4A235A;">2.400.000 VNĐ</td>
+                  <td style="font-weight: bold; color: #4A235A;">{{ number_format($item['price']) }}₫</td>
                   <td> 
-                     <button type="button" class="btn btn-danger" onclick="">Xóa</button>
+                     <button type="button" class="btn btn-danger" onclick="DeleteListItemCart({{ $item['productInfo']->productID }});">Xóa</button>
                   </td>
-               </tr> 
+               </tr>
+               @endforeach    
              
             </tbody>
          </table>
@@ -45,20 +49,24 @@
             <b>Lưu thay đổi</b> 
         </a>
         <br>
+        @endif
 
+         @if (Session::has("Cart") != null)
          <div style="color: #4A235A;">
             <p>
-            <h5>Giỏ hàng hiện tại của bạn đang có Sản phẩm</h5>
+            <h5>Giỏ hàng hiện tại của bạn đang có {{ Session::get('Cart')->totalQuanty }} Sản phẩm</h5>
             </p>
             <p class="font-weight-bold">TỔNG TIỀN CỦA BẠN LÀ: 
-            <h4>2.400.000 ₫</h4>
+            <h4>{{number_format(Session::get('Cart')->totalPrice)}}₫</h4>
             </p>
          </div>
          <a href="{{ url('checkout') }}">
          <b><input type="submit" value="ĐẶT HÀNG NGAY" style=" background: linear-gradient(to right, #DC143C,#7D3C98);  color: #ffffff; font-size: 15px;  font-weight: bold;" class="button btn btn-light"></b></a>
-
+         @else
          
             <h2 style="color: #4A235A;">Bạn Chưa có sản phẩm trong giỏ hàng vui lòng thêm sản phẩm !</h2>
+       
+         @endif  
       </div>
    </div>
 </div>

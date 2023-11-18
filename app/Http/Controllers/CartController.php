@@ -39,15 +39,45 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function AddCart(Request $request, $productID)
-    {   
+    {    
+        $product = DB::table('products')->where('productID', $productID)->first();
+        if($product != null){
+            // nếu Session('Cart') khác null thì gán cho biến $oldcart ngược lại thì gán null 
+                $oldcart =  Session('Cart') ? Session('Cart') : null;
+                $newcart = new Cart($oldcart);
+                $newcart->AddCart($product, $product->productID);
+                $request->session()->put('Cart', $newcart);
+        }
         return view('cart');
     }
     public function DeleteItemCart(Request $request, $productID)
-    {   
+    {   //lay giỏ hàng cũ 
+        $oldcart =  Session('Cart') ? Session('Cart') : null;
+        $newcart = new Cart($oldcart); //tạo đôi tượng newcart
+        $newcart->DeleteItemCart($productID);
+         // kiểm tra giỏ hàng nếu còn thì đẩy session lên lại nếu ko còn thì xóa giỏ hàng
+       if(Count( $newcart->products ) > 0 ){
+       
+           $request->Session()->put('Cart', $newcart);
+       }
+       else{
+           $request->Session()->forget('Cart');
+       }
        return view('cart');
     }
     public function DeleteListItemCart(Request $request, $productID)
-    {   
+    {   //lay giỏ hàng cũ 
+        $oldcart =  Session('Cart') ? Session('Cart') : null;
+        $newcart = new Cart($oldcart);
+        $newcart->DeleteItemCart($productID);
+         // kiểm tra giỏ hàng nếu còn thì đẩy session lên lại nếu ko còn thì xóa giỏ hàng
+         if(( $newcart->products ) != null ){
+       
+           $request->Session()->put('Cart', $newcart);
+       }
+       else{
+           $request->Session()->forget('Cart');
+       }
        return view('listcart');
     }
     /* lưu từng quanty của sản phẩm
@@ -64,7 +94,14 @@ class CartController extends Controller
     public function SaveAllItem(Request $request)
     {
        
-       
+       foreach($request->data as $item)
+       {
+        $oldcart =  Session('Cart') ? Session('Cart') : null;
+        $newcart = new Cart($oldcart); //tạo đôi tượng newcart
+        $newcart->UpdateItemCart($item["key"], $item["value"]);
+           // kiểm tra giỏ hàng nếu còn thì đẩy session lên lại nếu ko còn thì xóa giỏ hàng
+       $request->Session()->put('Cart', $newcart);
+       }
         return view('listcart');
      
  

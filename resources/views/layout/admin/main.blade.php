@@ -7,28 +7,28 @@
 
   <title>Trang quản trị </title>
   
-  <link rel="stylesheet" href="{{ asset('public/summernote/summernote-bs4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('summernote/summernote-bs4.min.css') }}">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('public/backend/plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('public/backend/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <script src="{{ asset('public/backend/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{ asset('public/backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE -->
-<script src="{{ asset('public/backend/dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="{{ asset('public/backend/plugins/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset('public/backend/dist/js/demo.js') }}"></script>
-<script src="{{ asset('public/backend/dist/js/pages/dashboard3.js') }}"></script>
-<script src="{{ asset('public/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('public/backend/dist/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('backend/dist/js/demo.js') }}"></script>
+<script src="{{ asset('backend/dist/js/pages/dashboard3.js') }}"></script>
+<script src="{{ asset('summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('backend/dist/js/sweetalert.min.js') }}"></script>
 
 
 

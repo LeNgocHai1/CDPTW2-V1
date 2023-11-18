@@ -30,8 +30,8 @@
           </td>
           
           <td> 
-            <a class="button btn btn-success" href="{{ route('user.edit') }}"><i class="fas fa-tools"></i>  Sữa</a>
-            <form class="d-inline-block " action="{{ route('user.destroy') }}" method="post" >
+            <a class="button btn btn-success" href=""><i class="fas fa-tools"></i>  Sữa</a>
+            <form class="d-inline-block " action="" method="post" >
               {{ csrf_field() }}
               @method('DELETE')
               {{-- HTML không có các method PUT, PATCH, DELETE, nên cần dùng lệnh @method để có thể gán các method này --}}

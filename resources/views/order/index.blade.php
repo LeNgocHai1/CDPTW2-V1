@@ -30,18 +30,19 @@
         </tr>
       </thead>
       <tbody>
+        @foreach($customers as $customer)
         <tr>
-          <td>Lê Ngọc Hải</td>
-          <td>TP.HCM</td>
-          <td>17-11-2023</td>
-          <td>lengochai.fit2019@gmail.com</td>
+          <td>{{ $customer->name }}</td>
+          <td>{{ $customer->address }}</td>
+          <td>{{ $customer->created_at }}</td>
+          <td>{{ $customer->email }}</td>
              <td>
-               Đang xử lý
+               {{ $customer->status }}
              </td>
           
           <td> 
-            <a class="button btn btn-success" href=""><i class="fas fa-info-circle"></i> Chi tiết</a>
-            <form class="d-inline-block " action="" method="post" >
+            <a class="button btn btn-success" href="{{ route('bill.edit',$customer->id) }}"><i class="fas fa-info-circle"></i> Chi tiết</a>
+            <form class="d-inline-block " action="{{  route('bill.destroy',$customer->id) }}" method="post" >
               {{ csrf_field() }}
               @method('DELETE')
               {{-- HTML không có các method PUT, PATCH, DELETE, nên cần dùng lệnh @method để có thể gán các method này --}}
@@ -54,6 +55,9 @@
           
           </td>
         </tr>
+       
+
+        @endforeach
       </tbody>
     </table>
    
