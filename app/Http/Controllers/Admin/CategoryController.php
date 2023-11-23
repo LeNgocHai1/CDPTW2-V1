@@ -17,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
-        return view('category.index');
+        $categories = Category::paginate(5);
+        return view('category.index', ['categories' => $categories]);
     }
 
     /**
@@ -40,6 +40,10 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         
+        $category = new Category();
+        $category->categoryName = $request->categoryName;
+        $category->cate_description = $request->cate_description;
+        $category->save();
         return redirect()->route('category.index');
     }
 
@@ -51,7 +55,27 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+
+        if ($request->hasFile('productImage')) {
+            $des = 'public/upload';
+            $imgname = $request->file('productImage')->getClientOriginalName();
+            $request->file('productImage')->move($des, $imgname);
+            $product->productImage = $imgname;
+        }
+    
+
+        $product->categoryID = $request->categoryID;
+        $product->productName = $request->productName;
+        $product->listPrice = $request->listPrice;
+        $product->discountPercent = $request->discountPercent;
+        $product->description = $request->description;
+    
+
+        $product->save();
+    
+        return redirect()->route('product.index');
     }
 
     /**
@@ -62,9 +86,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-       
-       return view('category.edit');
-
+        $category = Category::find($id); 
+       return view('category.edit',['category'=>$category]);
     }
 
     /**
@@ -76,7 +99,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $category = Category::find($id);
+        $request->validate([
+            'categoryName' => 'required',
+            'cate_description' => 'required',
+        ]);
+        $category->categoryName = $request->categoryName;
+        $category->cate_description = $request->cate_description;
+        $category->save();
         return redirect()->route('category.index');
     }
 

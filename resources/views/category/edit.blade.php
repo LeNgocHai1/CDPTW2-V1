@@ -4,7 +4,7 @@
   <div class="container">
       <div class="row">
           <div class="col-sm-10">
-              <form action="{{ route('category.update') }}" method="post">
+              <form action="{{ route('category.update',$category->categoryID) }}" method="post">
             {{ csrf_field() }}
             @method('PUT')
             <div class="form-group">

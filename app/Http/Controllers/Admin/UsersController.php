@@ -16,8 +16,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-       
-       return view('account.index');
+        $users = Users::paginate(3);
+        //$users = Users::where('typeuser','user')->get();
+       return view('account.index',['users'=>$users]);
     }
 
     /**
@@ -60,8 +61,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-       
-        return view('account.edit');
+        $user = Users::find($id); 
+        return view('account.edit',['user'=>$user]);
     }
 
     /**
@@ -73,7 +74,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $user = Users::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phonenumber = $request->phonenumber;
+        $user->address = $request->address;
+        $user->save();
         return redirect()->route('user.index');
     }
 
@@ -85,7 +91,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        
+        $user = Users::find($id)->delete();
         return redirect()->route('user.index');
     }
     public function __construct()
