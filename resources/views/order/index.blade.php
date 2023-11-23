@@ -52,11 +52,8 @@
              
              <button type="submit" class="button btn btn-danger"> <i class="fas fa-trash-alt"></i> Xóa</button>
               </form>
-          
           </td>
         </tr>
-       
-
         @endforeach
       </tbody>
     </table>

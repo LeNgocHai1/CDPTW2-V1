@@ -220,6 +220,6 @@
 
             </div>
         </li>
-        <!--  <a class="nav-link" href="" style="padding-left: 0px; padding-right: 30px;"><i class="fas fa-tools"></i>   Xây dựng cấu hình</a> -->
+        <a class="nav-link" href="{{ route('build.index') }}" style="padding-left: 0px; padding-right: 30px;"><i class="fas fa-tools"></i>   Xây dựng cấu hình</a>
     </nav>
 </div>
