@@ -20,8 +20,8 @@ class ProductController extends Controller
     {
         
         //use Eloquent ORM
-        
-        return view('product.index');
+        $products = Product::paginate(10);
+        return view('product.index',['products'=>$products]);
     }
 
     /**
@@ -31,8 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create',['categories'=>$categories]);
     }
 
     /**
@@ -44,7 +44,17 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
        
-       
+       $des= 'public/upload';
+       $imgname = $request->file('productImage')->getClientOriginalName();
+       $product = new Product();
+       $product->categoryID = $request->categoryID;
+       $product->productName = $request->productName;
+       $product->productImage = $imgname;
+       $product->discountPercent = $request->discountPercent;
+       $product->description = $request->description;
+       $product->listPrice = $request->listPrice;
+       $product->save();
+       $request->file('productImage')->move($des,$imgname);
        return redirect()->route('product.index');
     }
 
@@ -56,10 +66,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        
-        return view('product.show');
-
+        $categories = Category::where('categories.categoryID', $id)->get();
+        $products = Product::where('categoryID', $id)->paginate(5);
+        return view('product.show', ['categories' => $categories, 'products' => $products]);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -69,8 +81,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       
-        return view('product.edit');
+        $categories = category::all();
+        $product = Product::find($id);
+        return view('product.edit',['categories'=>$categories,'product'=>$product]);
     }
 
     /**
@@ -82,7 +95,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {   
-       
+        $des= 'public/upload';
+        $imgname = $request->file('productImage')->getClientOriginalName();
+        $product = Product::find($id);
+        $product->categoryID = $request->categoryID;
+        $product->productName = $request->productName;
+        $product->productImage = $imgname;
+        $product->discountPercent = $request->discountPercent;
+        $product->description = $request->description;
+        $product->listPrice = $request->listPrice;
+        $product->save();
+        $request->file('productImage')->move($des,$imgname);
         return redirect()->route('product.index');  
     }
 
