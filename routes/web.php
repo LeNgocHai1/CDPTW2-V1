@@ -100,3 +100,8 @@ Route::get('orderdetail', function () {
     
 })->name('orderdetail')->middleware('UserRole');
 
+Route::get('productdetail/{id}', 'ProductdetailController@show')->name('productdetail.show');
+Route::delete('productdetail/{id}', 'ProductsController@destroyProdetail')->name('prodetail.destroy');
+
+Route::delete('category/{id}', 'ProductsController@destroyCategory')->name('category.destroy');
+

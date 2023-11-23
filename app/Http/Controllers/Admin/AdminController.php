@@ -19,10 +19,6 @@ class AdminController extends Controller
     {
       
        return view('product.find');
-        
-
-         
-
 
     }
     public function count_category()

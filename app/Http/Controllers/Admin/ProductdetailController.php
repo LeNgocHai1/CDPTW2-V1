@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Controller;
 use App\ProductDetail;
 use Illuminate\Http\Request;
@@ -17,8 +17,13 @@ class ProductdetailController extends Controller
      */
     public function index()
     {
-     
-        return view('productdetail.index');
+
+      $products = DB::table('productdetails')
+                    ->join('products', 'productdetails.productID', '=', 'products.productID')
+                    ->select('productdetails.*', 'products.productName as productName')
+                    ->get();
+    $products = ProductDetail::paginate(2);
+        return view('productdetail.index',['products'=>$products]);
     }
 
     /**
@@ -28,8 +33,8 @@ class ProductdetailController extends Controller
      */
     public function create()
     {
-       
-        return view('productdetail.create');
+        $products = Product::all();
+        return view('productdetail.create',['products'=>$products]);
     }
 
     /**
@@ -40,7 +45,38 @@ class ProductdetailController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $des= 'public/upload';
+        $imgname1 = $request->file('productImage1')->getClientOriginalName();
+       if ($request->file('productImage2') != null) {
+        $imgname2 = $request->file('productImage2')->getClientOriginalName();
+       }
+       if ($request->file('productImage3') != null) {
+        $imgname3 = $request->file('productImage3')->getClientOriginalName();
+       }
+       $product = new ProductDetail();
+       $product->productID = $request->productID;
+       $product->brand = $request->brand;
+       $product->guarantee = $request->guarantee;
+       $product->productImage1 = $imgname1;
+       if (isset($imgname2)) {
+        $product->productImage2 = $imgname2;
+       } else {
+        $product->productImage2 = '';
+       }
+       if (isset($imgname3)) {
+        $product->productImage3 = $imgname3;
+       } else {
+        $product->productImage3 = '';
+       }
+       $product->description = $request->description;
+       $product->save();
+       $request->file('productImage1')->move($des,$imgname1);
+       if (isset($imgname2)) {
+        $request->file('productImage2')->move($des,$imgname2);
+       }
+       if (isset($imgname3)) {
+        $request->file('productImage3')->move($des,$imgname3);
+       }
        return redirect()->route('prodetail.index');
     }
 
@@ -52,7 +88,8 @@ class ProductdetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $prodetail = ProductDetail::find($id);
+        return view('productdetail.show', ['productdetail' => $prodetail]);
     }
 
     /**
@@ -63,8 +100,9 @@ class ProductdetailController extends Controller
      */
     public function edit($id)
     {
-       
-        return view('productdetail.edit');
+        $products = Product::all();
+        $prodetail = ProductDetail::find($id);
+        return view('productdetail.edit',['products'=>$products, 'prodetail'=>$prodetail]);
       
     }
 
@@ -77,7 +115,38 @@ class ProductdetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $des= 'public/upload';
+        $imgname1 = $request->file('productImage1')->getClientOriginalName();
+       if ($request->file('productImage2') != null) {
+        $imgname2 = $request->file('productImage2')->getClientOriginalName();
+       }
+       if ($request->file('productImage3') != null) {
+        $imgname3 = $request->file('productImage3')->getClientOriginalName();
+       }
+       $product = ProductDetail::find($id);
+       $product->productID = $request->productID;
+       $product->brand = $request->brand;
+       $product->guarantee = $request->guarantee;
+       $product->productImage1 = $imgname1;
+       if (isset($imgname2)) {
+        $product->productImage2 = $imgname2;
+       } else {
+        $product->productImage2 = '';
+       }
+       if (isset($imgname3)) {
+        $product->productImage3 = $imgname3;
+       } else {
+        $product->productImage3 = '';
+       }
+       $product->description = $request->description;
+       $product->save();
+       $request->file('productImage1')->move($des,$imgname1);
+       if (isset($imgname2)) {
+        $request->file('productImage2')->move($des,$imgname2);
+       }
+       if (isset($imgname3)) {
+        $request->file('productImage3')->move($des,$imgname3);
+       }
        return redirect()->route('prodetail.index');
     }
 
@@ -89,7 +158,12 @@ class ProductdetailController extends Controller
      */
     public function destroy($id)
     {
-       
-        return redirect()->route('prodetail.index ');
+    //     $prodetail = ProductDetail::find($id);
+    //     if ($prodetail) {
+    //     $prodetail->delete();
+    //     return redirect()->route('prodetail.index')->with('success', 'Xóa sản phẩm thành công.');
+    // } else {
+    //     return redirect()->route('prodetail.index')->with('error', 'Sản phẩm không tồn tại.');
+    // }
     }
 }
