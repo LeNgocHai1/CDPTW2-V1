@@ -15,42 +15,45 @@
         </tr>
       </thead>
       <tbody>
+       @foreach ($products as $product)
        <tr>
         <td>
-          CPU INTEL Core i7-9700 (8C/8T, 3.00 GHz up to 4.70 GHz, 12MB) - 1151-v2
-        <td>
-             <div class="product-image-thumb" ><img src="../public/upload/cpu1.jpg" alt="Product Image"></div>
-             <div class="product-image-thumb" ><img src="../public/upload/cpu2.jpg" alt="Product Image"></div>
-             
-             <div class="product-image-thumb" ><img src="../public/upload/cpu3.jpg" alt="Product Image"></div>    
-             
-             
+           {{ $product->productName }} 
+           <td>
+            <div class="product-image-thumb">
+                <img src="{{ asset('public/upload/' . $product->productImage1) }}" alt="Product Image">
+            </div>
+            @if ($product->productImage2 != null)
+                <div class="product-image-thumb">
+                    <img src="{{ asset('public/upload/' . $product->productImage2) }}" alt="Product Image">
+                </div>
+            @endif
+            @if ($product->productImage3 != null)
+                <div class="product-image-thumb">
+                    <img src="{{ asset('public/upload/' . $product->productImage3) }}" alt="Product Image">
+                </div>
+            @endif
         </td>
+        
         <td>
-          INTEL 
+            {{ $product->brand }} 
         </td>
-        <td>  12 Tháng</td>
+        <td>  {{ $product->guarantee }} Tháng</td>
         <td> 
-            <a class="button btn btn-success" href=""><i class="fas fa-tools"></i>  Sửa</a>
-            <form class="d-inline-block " action="" method="post" >
+            <a class="button btn btn-success" href="{{ route('prodetail.edit',$product->id) }}"><i class="fas fa-tools"></i>  Sửa</a>
+            <a class="button btn btn-info" href="{{ route('prodetail.show',$product->id) }}"><i class="fas fa-tools"></i>  Xem</a>
+            <form class="d-inline-block " action="{{ route('prodetail.destroy',$product->id) }}" method="post" >
               {{ csrf_field() }}
               @method('DELETE')
-              {{-- HTML không có các method PUT, PATCH, DELETE, nên cần dùng lệnh @method để có thể gán các method này --}}
-              {{-- or --}}
-              {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-              {{-- <input type="hidden" name="_method" value="delete"> --}}
-              
-              <input type="submit" value="Xóa" class="button btn btn-danger">
+              <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="button btn btn-danger">Xóa</button>
               </form>
           
           </td>
       </tr>
-       
-
-
+       @endforeach
       </tbody>
     </table>
-  
+    <div class="d-flex justify-content-center">{{ $products->links() }}</div>
     <p class="d-flex justify-content-end">
         <a class="btn btn-info btn-sm fa fa-plus" href="{{ route('prodetail.create') }}">Thêm chi tiết cho Sản phẩm</a>
     </p>

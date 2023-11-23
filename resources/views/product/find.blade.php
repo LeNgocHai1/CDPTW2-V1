@@ -10,26 +10,23 @@
             <th>Tên sản phẩm</th>
             <th>Ảnh sản phẩm</th>
          <th>Giá sản phẩm</th>
-       
-    
         </tr>
       </thead>
       <tbody>
+       @foreach ($result as $row)
        <tr>
-        <td>Main</td>
-        <td>Mainboard GIGABYTE B365M AORUS ELITE	
-        </td>
+        <td>{{ $row->categoryName }}</td>
+        <td>{{ $row->productName }}</td>
       
         <td>
-             <div class="product-image-thumb" ><img src="../public/upload/cpu3.jpg" alt="Product Image"></div>
+             <div class="product-image-thumb" ><img src="../public/upload/{{ $row->productImage }}" alt="Product Image"></div>
         </td>
         <td>
-          2.444.000 VNĐ 
+          {{number_format($row->listPrice)}}đ 
         </td>
         
       </tr>
-       
-
+       @endforeach
 
       </tbody>
     </table>

@@ -14,9 +14,12 @@
             <div class="form-group">
                 <label for="categoryID" style="font-weight: bold">Danh mục:</label>
                 <select name="categoryID" id="categoryID" class="form-control">
-                    <option value="">
-                    CPU
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->categoryID }}">
+                    {{ $category->categoryName }}
                     </option>
+                        
+                    @endforeach
                 </select>
 
             </div>
