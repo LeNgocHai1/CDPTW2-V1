@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         
+        //use Eloquent ORM
         $products = Product::paginate(10);
         return view('product.index',['products'=>$products]);
     }
@@ -70,6 +71,8 @@ class ProductController extends Controller
         return view('product.show', ['categories' => $categories, 'products' => $products]);
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -114,13 +117,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        if ($product) {
-        $product->delete();
-        return redirect()->route('product.index')->with('success', 'Xóa sản phẩm thành công.');
-    } else {
-        return redirect()->route('product.index')->with('error', 'Sản phẩm không tồn tại.');
-    }
+        $product = Product::find($id)->delete();
+        return redirect()->route('product.index'); 
     }
     public function __construct()
     {
