@@ -35,14 +35,8 @@
             <div class="p-2  mt-3"><h6>GIAO HÀNG NHANH </h6></div>
           </div>
           </div>
-
       </div>
-      
     </div>
-
-    
-     
-      
       <!-- Grid column -->
 
       <hr class="clearfix w-100 d-md-none pb-3">
