@@ -202,12 +202,11 @@
         <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="navbarDropdown"><i class="fas fa-bars"></i> Sản phẩm</a>
             <div class="dropdown-content">
-                    <a class="dropdown-item" href="">
-                        Cpu
+                @foreach (App\Category::all() as $item)
+                    <a class="dropdown-item" href="{{ route('proshow.show', $item->categoryID) }}">
+                        {{ $item->categoryName }}
                     </a>
-                    <a class="dropdown-item" href="">
-                        Cpu
-                    </a>
+                @endforeach
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -220,6 +219,7 @@
 
             </div>
         </li>
-        <a class="nav-link" href="{{ route('build.index') }}" style="padding-left: 0px; padding-right: 30px;"><i class="fas fa-tools"></i>   Xây dựng cấu hình</a>
+        <a class="nav-link" href="{{ route('build.index') }}" style="padding-left: 0px; padding-right: 30px;"><i
+                class="fas fa-tools"></i> Xây dựng cấu hình</a>
     </nav>
 </div>

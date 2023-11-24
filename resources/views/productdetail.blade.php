@@ -167,7 +167,7 @@
                         <div class="slider-box">
                             <p class="time">New</p>
                             <div class="img-box">
-                                <img src="../public/upload/{{ $pro->productImage }}">
+                                <img src="{{ asset('upload/' . $pro->productImage) }}" style="width: 100%">
                             </div>
 
                             <p class="detail product-title" data-toggle="tooltip" data-placement="bottom"
@@ -188,9 +188,7 @@
     </div>
     </div>
     <!-- Phần comment -->
-    <div class="container">
-
-
+    <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="card">
