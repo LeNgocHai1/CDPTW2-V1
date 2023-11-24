@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="productName" style="font-weight: bold">Thời gian bảo hành</label>
-                <input type="text" name="guarantee" id="guarantee" class="form-control" pattern="[0-9]+>
+                <input type="text" name="guarantee" id="guarantee" class="form-control" pattern="[0-9]+">
             </div>
             <div class="form-group">
                 <label for="productImage1" style="font-weight: bold">Chọn hình ảnh thứ nhất :</label>

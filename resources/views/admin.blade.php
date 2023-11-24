@@ -12,15 +12,12 @@
         </tr>
       </thead>
       <tbody>
+           @foreach ($quantity as $row)
            <tr>
-            <td class="font-weight-bold">Cpu</td>
-            
-            <td>hiện đang có 21 Sản phẩm</td>
+            <td class="font-weight-bold">{{ $row->categoryName }}</td>
+            <td>hiện đang có {{ $row->quantity }} Sản phẩm</td>
           </tr>
-
-        
- 
-
+           @endforeach
       </tbody>
     </table>
   </div>

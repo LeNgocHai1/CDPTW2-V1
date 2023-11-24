@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,15 +51,20 @@ Route::post('All-Save','CartController@SaveAllItem');
 Route::get('checkout', 'CheckoutController@getCheckOut');
 Route::post('Check-Out', 'CheckoutController@postCheckOut');
 // thanh toán trực tuyến vnpay
-Route::get('Return-Result', 'VnPayController@return');
+//Route::get('Return-Result', 'VnPayController@return');
 // điều hướng đến trang thông tin tài khoản
 Route::resources([
   'info'=>'UserController',
 ]);
+
 // điều hướng đến list sản phẩm và chi tiết sản phẩm tại public
 Route::get('show/{show}', 'ProductsController@showlist')->name('proshow.show');
 Route::get('showdetail/{show}', 'ProductsController@showdetail')->name('detail.show');
 Route::get('Add-Item-Cart/{id}', 'ProductsController@AddItemCart')->name('add.itemcart');
+Route::get('showdetailproduct/{id}', 'ProductsController@showdetailproduct')->name('product.showdetail');
+
+Route::get('productdetail/{id}', 'ProductdetailController@show')->name('productdetail.show');
+
 
 // xây dựng cấu hình
 Route::get('buildpc', 'BuildController@index')->name('build.index');
@@ -74,7 +82,6 @@ Route::post('find','HomeController@find')->name('home.find');
 Route::get('gioithieu',function(){
   return view('introduce');
 })->name('gioithieu');
-
 
 
 
@@ -99,9 +106,11 @@ Route::get('orderdetail', function () {
   return view('orderdetail');
     
 })->name('orderdetail')->middleware('UserRole');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('productdetail/{id}', 'ProductdetailController@show')->name('productdetail.show');
 Route::delete('productdetail/{id}', 'ProductsController@destroyProdetail')->name('prodetail.destroy');
 
 Route::delete('category/{id}', 'ProductsController@destroyCategory')->name('category.destroy');
+
+
 
