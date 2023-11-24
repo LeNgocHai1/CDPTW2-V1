@@ -61,7 +61,7 @@
                     @foreach ($products as $product)
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="card card-product">
-                                <img class="card-img-top" src="{{ asset('/public/upload/' . $product->productImage) }}"
+                                <img class="card-img-top" src="{{ asset('upload/' . $product->productImage) }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h6 class="card-title product-title mb-3">
@@ -135,7 +135,7 @@
                         @foreach ($vocase as $item)
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product">
-                                    <img class="card-img-top" src="{{ asset('/upload' . $item->productImage) }}"
+                                    <img class="card-img-top" src="{{ asset('upload/' . $item->productImage) }}"
                                         alt="Card image cap">
                                     <div class="card-body">
                                         <h6 class="card-title product-title mb-3">
@@ -189,7 +189,7 @@
                         @foreach ($monitor as $item)
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product">
-                                    <img class="card-img-top" src="{{ asset('public/upload/' . $item->productImage) }}" alt="Card image cap">
+                                    <img class="card-img-top" src="{{ asset('upload/' . $item->productImage) }}" alt="Card image cap">
                                     <div class="card-body">
                                         <h6 class="card-title product-title mb-3">
                                             <a data-toggle="tooltip" data-placement="bottom" title="{{ $item->productName }}"

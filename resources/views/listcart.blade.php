@@ -14,7 +14,7 @@
     <tbody>
        @foreach(Session::get('Cart')->products as $item)
         <tr>
-            <td> <img src="{{ asset('public/upload/' . $item['productInfo']->productImage)}}" style="vertical-align: middle;  width:80px;margin-right: 30px">
+            <td> <img src="{{ asset('upload/' . $item['productInfo']->productImage)}}" style="vertical-align: middle;  width:80px;margin-right: 30px">
             </td>
 
             <td>
