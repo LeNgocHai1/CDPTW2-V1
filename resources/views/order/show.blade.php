@@ -29,36 +29,38 @@
                     <tbody>
                     <tr>
                         <td><b>Thông tin người đặt hàng</b></td>
-                        <td>Lê Ngọc Hải</td>
+                        <td>{{ $customer->name }}</td>
                     </tr>
                     <tr>
                         <td><b>Ngày đặt hàng</b></td>
-                        <td>17-11-2023</td>
+                        <td>{{ $customer->created_at }}</td>
                     </tr>
                     <tr>
                         <td><b>Số điện thoại</b></td>
-                        <td>0332369993</td>
+                        <td>{{ $customer->phone_number }}</td>
                     </tr>
                     <tr>
                         <td><b>Địa chỉ</b></td>
-                        <td>TP.HCM</td>
+                        <td>{{ $customer->address }}</td>
                     </tr>
                     <tr>
                         <td><b>Email</b></td>
-                        <td>lengochai.fit2019@gmail.com</td>
+                        <td>{{ $customer->email }}</td>
                     </tr>
                     <tr>
                         <td><b>Ghi chú</b></td>
-                        <td>Giao hàng nhanh tầm 1 2 ngày</td>
+                        <td>{{ $customer->bill_note }}</td>
                     </tr>
                     <tr>
                         <td><b>Hình thức thanh toán</b></td>
-                        <td>Thanh toán khi nhận hàng</td>
+                        <td>{{ $customer->bill_payment }}</td>
                     </tr>
+                    @if ($customer->bill_codevnpay != null)
                     <tr>
                         <td><b>Mã giao dịch VNPAY</b></td>
-                        <td>24435</td>
+                        <td>{{ $customer->bill_codevnpay }}</td>
                     </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -73,15 +75,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($bills as $key => $bill)
                     <tr>
-                        <td>1</td>
-                        <td>cpu sadasdasd</td>
-                        <td>1</td>
-                        <td>2.333.000 VNĐ</td>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $bill->product_name }}</td>
+                        <td>{{ $bill->quantily }}</td>
+                        <td>{{ number_format($bill->price) }} VNĐ</td>
                     </tr>
+                @endforeach
                 <tr>
                     <td colspan="3"><b>Tổng tiền</b></td>
-                    <td colspan="1"><b class="text-red">2.333.000 VNĐ</b></td>
+                    <td colspan="1"><b class="text-red">{{ number_format($customer->bill_total) }} VNĐ</b></td>
                 </tr>
                 </tbody>
             </table>
@@ -90,7 +94,7 @@
            
 
     <div class="col-md-12">
-        <form action="" method="POST">
+        <form action="{{  route('bill.update',$customer->bill_id) }}" method="POST">
             <input type="hidden" name="_method" value="PUT">
             {{ csrf_field() }}
             <div class="col-md-8"></div>
