@@ -5,7 +5,6 @@
     @include('error')
  </div>
 <div class="container">
-    @if(isset($banner))
     <div class="row">
         <div class="col-sm-10">
             <form action="{{ route('banner.store') }}" method="post" enctype="multipart/form-data" id="productForm">
@@ -27,9 +26,6 @@
             </form>
         </div>
     </div>
-    @else
-    <p>Sản phẩm không tồn tại.</p>
-@endif
 </div>
 <script>
      $(document).ready(function() {
