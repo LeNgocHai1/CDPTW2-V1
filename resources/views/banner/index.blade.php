@@ -22,15 +22,14 @@
             </tr>
         </thead>
         <tbody>
-
+            @if(isset($slide))
                 <tr> 
                     <td>
-                        <div class=""><img  src="{{ asset('public/upload/' . $slide->slide) }}" alt="Product Image" style="width: 300px;"></div>
+                        <div class=""><img  src="{{ asset('public/upload/' . $slide->slide) }}" alt="Active Slide Image" style="width: 300px;"></div>
                     </td>
-                    <td>
-                        {{-- <a class="button btn btn-success" href="{{ route('banner.edit',$item->id) }}"><i class="fas fa-tools"></i>  Sửa</a> --}}
-                    </td>
+
                 </tr>
+            @endif
             <tr class="bg-info text-white">
                 <th>Ảnh slide</th>
                 <th>Thao tác</th>
@@ -42,15 +41,14 @@
                         <div class=""><img  src="{{ asset('public/upload/' . $item->slide1) }}"  alt="Product Image" style="width: 300px;"></div>
                     </td>
                     <td>
-                      <div class=""><img  src="{{ asset('public/upload/' . $item->ads) }}"  alt="Product Image" style="width: 300px;"></div>
-                  </td>
+                        <div class=""><img  src="{{ asset('public/upload/' . $item->ads) }}"  alt="Product Image" style="width: 300px;"></div>
+                    </td>
                     <td> 
-                        <a class="button btn btn-success" href="{{ route('banner.edit',$item->id) }}"><i class="fas fa-tools"></i>  Sửa</a>
-                        <form class="d-inline-block " action="{{ route('banner.destroy', $item->id) }}" method="post">
+                        <a class="button btn btn-success" href="{{ route('banner.edit', $item->id) }}"><i class="fas fa-tools"></i>  Sửa</a>
+                        <form class="d-inline-block" action="{{ route('banner.destroy', $item->id) }}" method="post">
                             {{ csrf_field() }}
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa banner này?')"
-                            class="button btn btn-secondary">Xóa</button>
+                            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa banner này?')" class="button btn btn-secondary">Xóa</button>
                         </form>
                     </td>
                 </tr>

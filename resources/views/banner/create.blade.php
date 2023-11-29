@@ -13,6 +13,10 @@
                 <label for="categoryID" style="font-weight: bold">Hình ảnh:</label>
             </div>
             <div class="form-group">
+                <label for="slide" style="font-weight: bold">Chọn hình ảnh cho slide:</label>
+                <input type="file" name="slide" id="slide" class="form-control-file"> 
+            </div>
+            <div class="form-group">
                 <label for="slide1" style="font-weight: bold">Chọn hình ảnh cho slide:</label>
                 <input type="file" name="slide1" id="slide1" class="form-control-file"> 
             </div>
