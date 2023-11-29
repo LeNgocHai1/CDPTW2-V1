@@ -45,11 +45,7 @@
             <form class="d-inline-block " action="{{  route('bill.destroy',$customer->id) }}" method="post" >
               {{ csrf_field() }}
               @method('DELETE')
-              {{-- HTML không có các method PUT, PATCH, DELETE, nên cần dùng lệnh @method để có thể gán các method này --}}
-              {{-- or --}}
-              {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-              {{-- <input type="hidden" name="_method" value="delete"> --}}
-             
+
              <button type="submit" class="button btn btn-danger"> <i class="fas fa-trash-alt"></i> Xóa</button>
               </form>
           </td>
@@ -57,7 +53,7 @@
         @endforeach
       </tbody>
     </table>
-   
+    <div class="d-flex justify-content-center">{{ $customers->links() }}</div>
 
   </div>
     

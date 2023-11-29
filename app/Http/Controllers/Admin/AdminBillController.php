@@ -23,6 +23,7 @@ class AdminBillController extends Controller
                     ->join('bills', 'customers.id', '=', 'bills.customerID')
                     ->select('customers.*', 'bills.status as status')
                     ->get();
+                    $customers = Customer::paginate(5);
       return view('order.index',['customers'=>$customers]);
     }
 
