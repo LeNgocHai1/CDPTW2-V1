@@ -64,7 +64,7 @@ class CheckoutController extends Controller
                $date = $bill->date_order;
                $name = $customer->name;
                $phonenumber = $customer->phone_number;
-                Mail::to($customer->email)->send(new ShoppingMail($bills, $billdetails, $date, $name, $phonenumber));
+                //Mail::to($customer->email)->send(new ShoppingMail($bills, $billdetails, $date, $name, $phonenumber));
 
              
           Session::flash('message', "Đơn hàng của bạn đang chờ được xử lí !");
