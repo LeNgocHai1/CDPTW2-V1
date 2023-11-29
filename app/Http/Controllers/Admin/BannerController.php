@@ -19,7 +19,7 @@ class BannerController extends Controller
     {
         $slides = Banner::paginate(5);
         $slide = DB::table('banner')->select('slide')->first();
-        //$slides = DB::table('banner')->get();
+
         return view('banner.index',['slide'=>$slide,'slides'=>$slides]);
         
     }
@@ -42,28 +42,39 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-         
-       $des= 'public/upload';
-       $imgname1 = $request->file('slide1')->getClientOriginalName();
-       if ($request->file('ads') != null) {
-        $imgname2 = $request->file('ads')->getClientOriginalName();
-       }
-       $banner = new Banner();
-       $banner->slide1 = $imgname1;
-       if (isset($imgname2)) {
+        $des = 'public/upload';
+    
+        if ($request->hasFile('slide1') && $request->file('slide1')->isValid()) {
+            $imgname1 = $request->file('slide1')->getClientOriginalName();
+            $request->file('slide1')->move($des, $imgname1);
+        } else {
+
+            $imgname1 = '';
+        }
+    
+        if ($request->hasFile('slide') && $request->file('slide')->isValid()) {
+            $imgname = $request->file('slide')->getClientOriginalName();
+            $request->file('slide')->move($des, $imgname);
+        } else {
+
+            $imgname = '';
+        }
+    
+        $imgname2 = '';
+        if ($request->hasFile('ads') && $request->file('ads')->isValid()) {
+            $imgname2 = $request->file('ads')->getClientOriginalName();
+            $request->file('ads')->move($des, $imgname2);
+        }
+    
+        $banner = new Banner();
+        $banner->slide1 = $imgname1;
+        $banner->slide = $imgname;
         $banner->ads = $imgname2;
-       } else {
-        $banner->ads = '';
-       }
-       $banner->save();
-       $request->file('slide1')->move($des,$imgname1);
-       if (isset($imgname2)) {
-        $request->file('ads')->move($des,$imgname2);
-       }
-     
-      
-       return redirect()->route('banner.index');
+        $banner->save();
+    
+        return redirect()->route('banner.index');
     }
+    
 
     /**
      * Display the specified resource.
