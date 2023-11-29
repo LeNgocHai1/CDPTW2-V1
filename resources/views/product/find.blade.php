@@ -11,7 +11,7 @@
             <th>Ảnh sản phẩm</th>
          <th>Giá sản phẩm</th>
         </tr>
-      </thead>
+      </thead> 
       <tbody>
        @foreach ($result as $row)
        <tr>

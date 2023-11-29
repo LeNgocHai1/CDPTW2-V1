@@ -16,18 +16,20 @@
         </tr>
       </thead>
       <tbody>
+      @foreach ($result as $row)
        <tr>
-        <td>CPU</td>
-        <td>CPU Intel Core i3-10100F + Quạt</td>
+        <td>{{ $row->categoryName }}</td>
+        <td>{{ $row->productName }}</td>
       
         <td>
-             <div class="product-image-thumb" ><img src="./public/upload/cpu1.jpg" style="width: 100px;" alt="Product Image"></div>
+             <div class="product-image-thumb" ><img src="../public/upload/{{ $row->productImage }}" alt="Product Image"></div>
         </td>
         <td>
-          1.990.000 VNĐ
+          {{number_format($row->listPrice)}}đ 
         </td>
         
       </tr>
+       @endforeach
        
 
 
