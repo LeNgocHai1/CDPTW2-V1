@@ -60,12 +60,12 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="" class="btn btn-outline-warning mx-1">
+              <a href="https://twitter.com/i/flow/login" class="btn btn-outline-warning mx-1">
                 <i class="fab fa-twitter"> </i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="" class="btn btn-outline-warning mx-1">
+              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJvkXwPgzBBNfdFXnMVlDBrMJZvSfMzrsGXtQVQgXRdZSwXSTfBPLZQhGZgcSjjvszktlzg" class="btn btn-outline-warning mx-1">
                 <i class="fab fa-google-plus-g"> </i>
               </a>
             </li>
