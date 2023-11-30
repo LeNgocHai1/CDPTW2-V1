@@ -103,7 +103,7 @@
                                  <td>
                                     <div class="form-check">
                                        <label class="form-check-label" for="radio1">
-                                         <input type="radio" class="form-check-input" id="radio1" name="thanhtoan" value="tienmat" checked><b>Thanh toán tại nhà</b>
+                                         <input type="radio" class="form-check-input" id="radio1" name="thanhtoan" value="tienmat" checked><b>Thanh toán khi nhận hàng</b>
                                        </label>
                                      </div>
                                      <div class="form-check">
