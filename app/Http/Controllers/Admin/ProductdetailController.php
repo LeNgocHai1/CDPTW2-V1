@@ -17,14 +17,14 @@ class ProductdetailController extends Controller
      */
     public function index()
     {
-
-      $products = DB::table('productdetails')
-                    ->join('products', 'productdetails.productID', '=', 'products.productID')
-                    ->select('productdetails.*', 'products.productName as productName')
-                    ->get();
-    $products = ProductDetail::paginate(2);
-        return view('productdetail.index',['products'=>$products]);
+        $products = DB::table('productdetails')
+                        ->join('products', 'productdetails.productID', '=', 'products.productID')
+                        ->select('productdetails.*', 'products.productName as productName')
+                        ->paginate(3);
+    
+        return view('productdetail.index', ['products' => $products]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -89,9 +89,10 @@ class ProductdetailController extends Controller
     public function show($id)
     {
         $prodetail = ProductDetail::find($id);
-        return view('productdetail.show', ['productdetail' => $prodetail]);
+        $product = Product::find($prodetail->productID);
+        return view('productdetail.show', ['productdetail' => $prodetail, 'product' => $product]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
