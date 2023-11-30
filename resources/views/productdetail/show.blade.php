@@ -2,7 +2,7 @@
 
 @section('content')
 @if(isset($productdetail))
-<h3>Tên sản phẩm: {{ $productdetail->productName }} </h3>
+<h3>Tên sản phẩm: {{ $product->productName }} </h3>
 <h6>Hãng: {{ $productdetail->brand}}</h6>
 <h6>Thời gian bảo hành: {{ $productdetail->guarantee}} tháng</h6>
 <H5>Hình ảnh chi tiết</H5>
