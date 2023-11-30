@@ -77,6 +77,7 @@ Route::resource('/replies','RepliesController');
 Route::post('/replies/ajaxDelete','RepliesController@ajaxDelete');
 //định tuyến đến trang home người dùng
 Route::get('/','HomeController@index')->name('home');
+Route::get('find','HomeController@find')->name('home.find');
 Route::post('find','HomeController@find')->name('home.find');
 // định tuyến đến trang giới thiệu
 Route::get('gioithieu',function(){

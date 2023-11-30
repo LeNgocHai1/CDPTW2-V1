@@ -40,30 +40,35 @@ class HomeController extends Controller
       $result = DB::select($sql,$params);
       */
       //c2 sử dụng query buider
-       if(!is_numeric($request->keywords))
-       {
-           $result = DB::table('categories')
+    //    if(!is_numeric($request->keywords))
+    //    {
+    //        $result = DB::table('categories')
+    //        ->join('products','categories.categoryID','=','products.categoryID')
+    //        ->select('categoryName','productName','productImage','listPrice')
+    //        ->orWhere('categoryName','like','%'.$request->keywords.'%')
+    //        ->orWhere('productName','like','%'.$request->keywords.'%')
+    //        ->get();
+    //    }
+    //    else{
+    //        $result = DB::table('categories')
+    //        ->join('products','categories.categoryID','=','products.categoryID')
+    //        ->select('categoryName','productName','productImage','listPrice')
+    //        ->Where('listPrice','<=',$request->keywords) 
+    //        ->get();         
+    //    }
+       
+    //    return view('findhome',['result'=>$result]);
+        
+
+        
+        $keyword = $request->keywords;
+        $result = DB::table('categories')
            ->join('products','categories.categoryID','=','products.categoryID')
            ->select('categoryName','productName','productImage','listPrice')
            ->orWhere('categoryName','like','%'.$request->keywords.'%')
            ->orWhere('productName','like','%'.$request->keywords.'%')
            ->get();
-       }
-       else{
-           $result = DB::table('categories')
-           ->join('products','categories.categoryID','=','products.categoryID')
-           ->select('categoryName','productName','productImage','listPrice')
-           ->Where('listPrice','<=',$request->keywords) 
-           ->get();         
-       }
-       
-       return view('findhome',['result'=>$result]);
-        
-
-        
-        $keyword = $request->keywords;
-        $result = DB::table('products')->where('productName','like','%'.$keyword.'%')->get();
-        return view('find',['product'=>$result]);
+        return view('findhome',['result'=>$result]);
         
 
 
