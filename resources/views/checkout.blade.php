@@ -105,12 +105,12 @@
                                        <label class="form-check-label" for="radio1">
                                          <input type="radio" class="form-check-input" id="radio1" name="thanhtoan" value="tienmat" checked><b>Thanh toán khi nhận hàng</b>
                                        </label>
-                                     </div>
+                                     </div>{{-- 
                                      <div class="form-check">
                                        <label class="form-check-label" for="radio2">
                                          <input type="radio" class="form-check-input" id="radio2" name="thanhtoan" value="tructuyen"><b>Thanh toán trực tuyến</b>
                                        </label>
-                                     </div>
+                                     </div> --}}
                                     <div class="form-group">
                                        <input type="submit" class="btn btn-info btn-xl mt-3" value="Gửi đơn hàng">
                                     </div>
